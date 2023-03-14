@@ -53,47 +53,47 @@ def createGcpInstance():
         disk_type = f"zones/{instance_zone}/diskTypes/pd-standard"
         disks = [createInstance.disk_from_image(disk_type, storage, True, newest_debian.self_link)]
 
-        createInstance.create_instance(default_project_id, instance_zone, instance_name, disks)
+        createInstance.create_instance(default_project_id, instance_zone, instance_name, disks,machine_type="e2-standard-4")
 
 
 def showGcpInstances():
-    project_id = str(input("Enter the priject_id :"))
+    project_id = google.auth.default()[1]
     zone = str(input("Enter zone : "))
 
     showInstance.list_instances(project_id, zone)
 
 def delGcpInstance():
-    project_id = str(input("Enter the priject_id :"))
+    project_id = google.auth.default()[1]
     zone = str(input("Enter zone : "))
-    machine_name= str(input("Enter the nam of the machine : "))
+    machine_name= str(input("Enter the name of the instance(instance-id) : "))
     deleteInstance.delete_instance(project_id, zone, machine_name)
 
+if __name__ == "__main__":
+    n=1
+    while(n>0):
+        if(n==1):
+            print("\t\n----------GCP----------\n")
+            print("""
+            \n\t
+            [1].Menu\n\t
+            [2].Create Instance\n\t
+            [3].Show Instance\n\t
+            [4].Delete Instance\n\t
+            [0].Exit\n\t
+                """)
+            n=int(input("Enter a number for desird action: "))
+        elif(n==2):
+            createGcpInstance()
+            n=1
+        elif(n==3):
+            showGcpInstances()
+            n=1
+        elif(n==4):
+            delGcpInstance()
+            n=1
+        else:
+            print("\t\nEnter a valid input\nEnter 0 to exit")
+            n=1
 
-n=1
-while(n>0):
-    if(n==1):
-        print("\t\n----------GCP----------\n")
-        print("""
-        \n\t
-        [1].Menu\n\t
-        [2].Create Instance\n\t
-        [3].Show Instance\n\t
-        [4].Delete Instance\n\t
-        [0].Exit\n\t
-            """)
-        n=int(input("Enter a number for desird action: "))
-    elif(n==2):
-        createGcpInstance()
-        n=1
-    elif(n==3):
-        showGcpInstances()
-        n=1
-    elif(n==4):
-        delGcpInstance()
-        n=1
-    else:
-        print("\t\nEnter a valid input\nEnter 0 to exit")
-        n=1
-
-print("\n------Thank you ------")
+    print("\n------Thank you ------")
 
