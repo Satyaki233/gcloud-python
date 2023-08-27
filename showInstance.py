@@ -22,5 +22,5 @@ def list_instances(project_id: str, zone: str) -> Iterable[compute_v1.Instance]:
 
     return instance_list
 
-list_instances("satyaki-first-project", "us-west4-b")
+list_instances("satyaki-gcp-01", "us-west4-b")
 

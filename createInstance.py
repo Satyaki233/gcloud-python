@@ -119,7 +119,7 @@ def create_instance(
     network_link: str = "global/networks/default",
     subnetwork_link: str = None,
     internal_ip: str = None,
-    external_access: bool = False,
+    external_access: bool = True,
     external_ipv4: str = None,
     accelerators: List[compute_v1.AcceleratorConfig] = None,
     preemptible: bool = False,

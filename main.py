@@ -19,9 +19,9 @@ def createGcpInstance():
 
         publicImages = [
             {
-                "NAME": "ubuntu-1804-bionic-v20230308",
+                "NAME": "ubuntu-minimal-2004-focal-v20230818",
                 "PROJECT": "ubuntu-os-cloud",
-                "FAMILY": "ubuntu-1804-lts",
+                "FAMILY": "ubuntu-2004-lts",
             },
             {
                 "NAME": "debian-11-bullseye-v20230306",
